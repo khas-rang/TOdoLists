@@ -1,18 +1,16 @@
 
-
+require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const date = require(__dirname + "/date.js");
 const mongoose= require("mongoose");
-require('dotenv').config();
-mongoose.connect("mongodb+srv://"+ process.env.UNAME +":"+ process.env.PWORD +"@cluster01.oxgxx4l.mongodb.net/NewDataB");
+
+mongoose.connect(process.env.CONNECTION_URI+process.env.U_NAME+":"+process.env.P_WORD+process.env.CLUSTER_PATH);
 const app = express();
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 const _=require("lodash");
-
-
 
 
 const itemSchema = new mongoose.Schema({
