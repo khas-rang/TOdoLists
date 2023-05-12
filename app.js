@@ -5,14 +5,14 @@ const bodyParser = require("body-parser");
 const date = require(__dirname + "/date.js");
 const mongoose= require("mongoose");
 
-mongoose.connect(process.env.CONNECTION_URI+process.env.U_NAME+":"+process.env.P_WORD+process.env.CLUSTER_PATH);
+mongoose.connect("mongodb+srv://"+process.env.U_NAME+":"+process.env.P_WORD+"@cluster01.oxgxx4l.mongodb.net/NewDataB");
 const app = express();
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 const _=require("lodash");
 
-
+//console.log(process.env.CONNECTION_URI +" "+ process.env.CLUSTER_PATH)
 const itemSchema = new mongoose.Schema({
   name: {
     type: String,
